@@ -1,4 +1,3 @@
-from six.moves.builtins import object
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from schedule.models import Event, Occurrence
@@ -6,11 +5,9 @@ from schedule.widgets import SpectrumColorPicker
 
 
 class SpanForm(forms.ModelForm):
-    start = forms.DateTimeField(label=_("start"),
-                                widget=forms.SplitDateTimeWidget)
-    end = forms.DateTimeField(label=_("end"),
-                              widget=forms.SplitDateTimeWidget,
-                              help_text=_(u"The end time must be later than start time."))
+    start = forms.SplitDateTimeField(label=_("start"))
+    end = forms.SplitDateTimeField(label=_("end"),
+                                   help_text=_(u"The end time must be later than start time."))
 
     def clean(self):
         if 'end' in self.cleaned_data and 'start' in self.cleaned_data:

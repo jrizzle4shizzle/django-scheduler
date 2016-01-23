@@ -1,12 +1,11 @@
-from six.moves.builtins import zip
-from six.moves.builtins import range
+from django.utils.six.moves.builtins import zip
+from django.utils.six.moves.builtins import range
 import datetime
 import pytz
 
 from django.test import TestCase
 from django.conf import settings
 
-from django.conf import settings
 from schedule.models import Event, Rule, Calendar
 from schedule.periods import Period, Month, Day, Year, Week
 
